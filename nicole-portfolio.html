@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicole Gil López - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3b82f6;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 30px auto;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        
+        .contact-links a:hover {
+            background: white;
+            color: #1e40af;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* Section Styling */
+        section {
+            margin-bottom: 60px;
+        }
+        
+        h2 {
+            color: #1e40af;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #3b82f6;
+        }
+        
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .about-content p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-category h3 {
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1e40af;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #3b82f6;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 30px;
+        }
+        
+        .project-content h3 {
+            color: #1e40af;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+        
+        .project-content p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .project-details {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .detail-badge {
+            background: #eff6ff;
+            color: #1e40af;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        /* Achievements Section */
+        .achievements-list {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .achievement-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3b82f6;
+            background: #eff6ff;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .achievement-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .achievement-item h3 {
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+        
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #3b82f6;
+        }
+        
+        .experience-item {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -47px;
+            top: 30px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 3px solid white;
+        }
+        
+        .experience-item h3 {
+            color: #1e40af;
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+        
+        .experience-item .role {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .experience-item .date {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .experience-item ul {
+            margin-left: 20px;
+        }
+        
+        .experience-item li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1e40af;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .container {
+                padding: 40px 15px;
+            }
+            
+            h2 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nicole Paulina Gil López</h1>
+            <p class="subtitle">Data Analytics & Retail Strategy Professional</p>
+            <img src="about:blank" alt="Nicole Gil" class="profile-img" id="profileImg">
+            <div class="contact-links">
+                <a href="mailto:nicolegillopez@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/nicolegillopez/" target="_blank">LinkedIn</a>
+                <a href="tel:5208340097">Call</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a Master of Science in Business Analytics student at the University of Arizona's Eller College of Management, with a strong foundation in Retailing and Consumer Science. My passion lies at the intersection of data analytics, supply chain management, and strategic planning, where I combine analytical rigor with creative problem-solving to drive business outcomes.</p>
+                
+                <p>With over five years of advanced Excel experience and a Python certification, I specialize in forecasting, organization, allocation, and data-driven strategic recommendations. My expertise spans supply chain logistics, retail planning, and business analytics, allowing me to transform complex data into actionable insights that improve efficiency and profitability.</p>
+                
+                <p>As a trilingual professional fluent in English, Spanish, and French, I bring a global perspective to every project. I'm passionate about developing innovative solutions to complex business challenges, whether it's optimizing retail assortments, streamlining supply chain operations, or creating predictive models that drive strategic decision-making. I thrive in collaborative environments where data meets creativity, and I'm always seeking new ways to leverage analytics for business growth.</p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>University of Arizona, Thrive Center</h3>
+                    <div class="role">Community Coordinator and Social Media Specialist</div>
+                    <div class="date">August 2023 – May 2025 | Tucson, Arizona</div>
+                    <ul>
+                        <li>Designed and executed large-scale community engagement events with strategic logistics planning and budgeting, coordinating teams of up to 60 people</li>
+                        <li>Created and analyzed marketing outreach strategies across digital platforms, increasing student participation and awareness</li>
+                        <li>Developed detailed operational guidelines to streamline event execution and stakeholder communication</li>
+                        <li>Applied data-driven insights and project management skills to support organizational goals and continuous improvement initiatives</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>College of Agriculture, Life, and Environmental Science</h3>
+                    <div class="role">College Ambassador</div>
+                    <div class="date">May 2024 – May 2025 | University of Arizona</div>
+                    <ul>
+                        <li>Delivered high-impact presentations to prospective students, leveraging storytelling and data to drive recruitment outcomes</li>
+                        <li>Independently managed event logistics, travel, and stakeholder communication to support college-wide strategic initiatives</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>Terry J. Lundgren Center for Retailing</h3>
+                    <div class="role">Student Advisory Board Member</div>
+                    <div class="date">May 2024 - May 2025 | University of Arizona</div>
+                    <ul>
+                        <li>Led coordination and promotion of career-focused events, speaker panels, and skill-building workshops to connect students with industry leaders</li>
+                        <li>Served as a liaison to Corporate Advisory Board partners, fostering professional relationships and enhancing the student experience</li>
+                        <li>Directed fundraising and mentoring efforts, aligning team initiatives with long-term Center objectives</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" id="lululemonImg">
+                        Lululemon 6-Month Planner
+                    </div>
+                    <div class="project-content">
+                        <h3>Lululemon Fall 2025 Strategic Plan</h3>
+                        <p>Developed a comprehensive 6-month merchandising and assortment plan to increase Lululemon's sales by strategically focusing on overperforming product categories while phasing out underperforming items. The project included detailed financial projections, consumer trend analysis, and product allocation strategies.</p>
+                        <p><strong>Key Achievements:</strong></p>
+                        <ul>
+                            <li>Created a $7.6 billion sales plan with 58.3% gross margin</li>
+                            <li>Analyzed consumer personas and market trends to inform product strategy</li>
+                            <li>Developed category-specific assortment plans by material, size, color, and price</li>
+                            <li>Identified 7 emerging trends including matching sets, sustainable materials, and loyalty programs</li>
+                        </ul>
+                        <div class="project-details">
+                            <span class="detail-badge">Fall 2025</span>
+                            <span class="detail-badge">Excel</span>
+                            <span class="detail-badge">Retail Analytics</span>
+                            <span class="detail-badge">Strategic Planning</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" id="legoImg">
+                        LEGO Strategic Analysis
+                    </div>
+                    <div class="project-content">
+                        <h3>Strategic Analysis for The LEGO Group</h3>
+                        <p>Conducted a comprehensive strategic analysis for The LEGO Group, including internal and external environmental analysis, SWOT analysis, and the development of a Blue Ocean Strategy to identify untapped market opportunities and competitive advantages.</p>
+                        <p><strong>Analysis Components:</strong></p>
+                        <ul>
+                            <li>Internal analysis of LEGO's core competencies and resources</li>
+                            <li>External market analysis including competitor positioning</li>
+                            <li>SWOT framework to identify strategic opportunities</li>
+                            <li>Blue Ocean Strategy creation to differentiate from competition</li>
+                            <li>Actionable strategic recommendations for market expansion</li>
+                        </ul>
+                        <div class="project-details">
+                            <span class="detail-badge">2024-2025</span>
+                            <span class="detail-badge">Strategic Management</span>
+                            <span class="detail-badge">Market Analysis</span>
+                            <span class="detail-badge">Business Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div>
+                        <span class="skill-tag">Advanced Excel</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Data Analytics</span>
+                        <span class="skill-tag">Forecasting</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Business Skills</h3>
+                    <div>
+                        <span class="skill-tag">Supply Chain</span>
+                        <span class="skill-tag">Strategic Planning</span>
+                        <span class="skill-tag">Logistics</span>
+                        <span class="skill-tag">Allocation</span>
+                        <span class="skill-tag">Merchandising</span>
+                        <span class="skill-tag">Retail Analytics</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Organization</span>
+                        <span class="skill-tag">Time Management</span>
+                        <span class="skill-tag">Teamwork</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div>
+                        <span class="skill-tag">English (Fluent)</span>
+                        <span class="skill-tag">Spanish (Fluent)</span>
+                        <span class="skill-tag">French (Fluent)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <h2>Achievements & Recognition</h2>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <h3>🏆 All-Arizona Scholar</h3>
+                    <p>Recognized for outstanding academic achievement and leadership at the University of Arizona</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3>🏆 All-USA Scholar</h3>
+                    <p>National recognition for exceptional academic performance and contributions</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3>🎓 Outstanding Senior Award</h3>
+                    <p>Selected as Outstanding Senior of the Class in Retailing and Consumer Science</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3>📜 Python Programming Certification</h3>
+                    <p>Certified in Python programming with advanced data analytics capabilities</p>
+                </div>
+                
+                <div class="achievement-item">
+                    <h3>🌍 Trilingual Professional</h3>
+                    <p>Fluent in English, Spanish, and French, enabling global business communication</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <div class="about-content" style="text-align: center;">
+                <p style="font-size: 1.2em; margin-bottom: 30px;">I'm always interested in new opportunities, collaborations, and conversations about data analytics, retail strategy, and supply chain management.</p>
+                <div class="contact-links" style="justify-content: center;">
+                    <a href="mailto:nicolegillopez@gmail.com" style="color: #1e40af; border-color: #1e40af;">Email Me</a>
+                    <a href="https://www.linkedin.com/in/nicolegillopez/" target="_blank" style="color: #1e40af; border-color: #1e40af;">LinkedIn</a>
+                    <a href="tel:5208340097" style="color: #1e40af; border-color: #1e40af;">(520) 834-0097</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Nicole Paulina Gil López. All rights reserved.</p>
+        <p>Tucson, Arizona | Master of Science in Business Analytics</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to nav links on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
